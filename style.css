@@ -1,18 +1,23 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
 :root {
-    --primary-color: #5C6BC0;
-    --primary-dark: #3F51B5;
-    --bg-color: #F3F4F6;
-    --card-bg: #FFFFFF;
-    --text-main: #1F2937;
-    --text-muted: #9CA3AF;
+    --primary-color: #6366F1; /* 세련된 인디고 블루 */
+    --primary-gradient: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+    --bg-color: #F8FAFC; /* 아주 부드럽고 시원한 톤의 배경 */
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-main: #0F172A;
+    --text-muted: #64748B;
     --danger-color: #EF4444;
+    --danger-bg: #FEE2E2;
     --success-color: #10B981;
-    --border-radius: 16px;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --border-radius: 24px;
+    --border-radius-sm: 12px;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
 }
 
 body {
-    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-main);
     margin: 0;
@@ -21,32 +26,39 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased; /* 폰트 렌더링 부드럽게 */
 }
 
 header {
     width: 100%;
-    background: var(--primary-color);
+    background: var(--primary-gradient);
     color: white;
-    padding: 1.5rem 0;
+    padding: 2.5rem 0 2rem 0;
     text-align: center;
-    box-shadow: var(--shadow);
+    border-bottom-left-radius: 36px;
+    border-bottom-right-radius: 36px;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+    margin-bottom: 2rem;
 }
 
 header h1 {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
 header p {
-    margin: 0.5rem 0 0 0;
-    font-size: 0.9rem;
+    margin: 0.8rem 0 0 0;
+    font-size: 1.05rem;
+    font-weight: 500;
     opacity: 0.9;
 }
 
 main {
     width: 100%;
     max-width: 600px;
-    padding: 1.5rem 1rem;
+    padding: 0 1.5rem 3rem 1.5rem;
     box-sizing: border-box;
 }
 
@@ -54,16 +66,22 @@ main {
 .dashboard {
     background: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: 1.5rem;
+    padding: 1.8rem;
     margin-bottom: 2rem;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
 }
 
 .dashboard h2 {
     margin-top: 0;
     font-size: 1.3rem;
-    color: var(--primary-dark);
-    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 #forgotten-list {
@@ -73,256 +91,319 @@ main {
 }
 
 #forgotten-list li {
-    padding: 0.8rem 0;
-    border-bottom: 1px solid #E5E7EB;
+    padding: 1rem 0;
+    border-bottom: 1px solid #F1F5F9;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-main);
 }
 
 #forgotten-list li:last-child {
     border-bottom: none;
+    padding-bottom: 0;
 }
 
 .empty-msg {
     color: var(--text-muted) !important;
     justify-content: center !important;
+    font-weight: 500 !important;
 }
 
 .badge {
-    background: var(--danger-color);
-    color: white;
-    padding: 0.2rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.85rem;
-    font-weight: bold;
+    background: var(--danger-bg);
+    color: var(--danger-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 800;
 }
 
 /* 목록 생성 영역 */
 .list-creator {
     display: flex;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+    background: var(--card-bg);
+    padding: 0.8rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .list-creator input {
     flex: 1;
-    padding: 0.8rem 1rem;
-    border: 2px solid #E5E7EB;
-    border-radius: var(--border-radius);
-    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    background: transparent;
+    font-size: 1.05rem;
+    font-weight: 500;
     outline: none;
-    transition: border-color 0.3s;
+    color: var(--text-main);
 }
 
-.list-creator input:focus {
-    border-color: var(--primary-color);
+.list-creator input::placeholder {
+    color: #94A3B8;
 }
 
 .list-creator button {
-    background: var(--primary-color);
+    background: var(--text-main);
     color: white;
     border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: var(--border-radius);
+    padding: 0 1.8rem;
+    border-radius: var(--border-radius-sm);
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1rem;
-    transition: background 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .list-creator button:hover {
-    background: var(--primary-dark);
+    background: var(--primary-color);
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
 /* 카드 UI */
 .lists-container {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .list-card {
     background: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
-    transition: transform 0.2s;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 }
 
 .list-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-5px);
+    box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.08), 0 15px 15px -5px rgba(0, 0, 0, 0.03);
 }
 
 .list-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 2px solid #F3F4F6;
+    margin-bottom: 1.5rem;
 }
 
 .list-title-wrap {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
 }
 
 .star-btn {
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
-    color: #D1D5DB;
-    transition: color 0.3s, transform 0.2s;
+    color: #E2E8F0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     padding: 0;
+    display: flex;
+    align-items: center;
 }
 
 .star-btn:hover {
-    transform: scale(1.2);
+    transform: scale(1.2) rotate(5deg);
 }
 
 .star-btn.active {
-    color: #FBBF24;
+    color: #F59E0B;
 }
 
 .list-title {
-    font-size: 1.3rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: 800;
     margin: 0;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
 }
 
 .delete-list-btn {
-    background: none;
+    background: #F1F5F9;
     border: none;
-    color: var(--text-muted);
+    color: #94A3B8;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 1.2rem;
-    transition: color 0.3s;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 }
 
 .delete-list-btn:hover {
+    background: var(--danger-bg);
     color: var(--danger-color);
+    transform: rotate(90deg);
 }
 
 /* 준비물 추가 영역 */
 .item-adder {
     display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
 }
 
 .item-adder input {
     flex: 1;
-    padding: 0.6rem 1rem;
-    border: 1px solid #E5E7EB;
-    border-radius: 8px;
-    font-size: 0.95rem;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid transparent;
+    background: #F1F5F9;
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    font-weight: 500;
     outline: none;
+    transition: all 0.3s ease;
 }
 
 .item-adder input:focus {
-    border-color: var(--success-color);
+    border-color: var(--primary-color);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
 }
 
 .item-adder button {
-    background: var(--success-color);
-    color: white;
+    background: #E2E8F0;
+    color: var(--text-main);
     border: none;
-    padding: 0.6rem 1rem;
-    border-radius: 8px;
+    padding: 0 1.5rem;
+    border-radius: var(--border-radius-sm);
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 700;
+    transition: all 0.3s ease;
 }
 
 .item-adder button:hover {
-    background: #059669;
+    background: var(--text-main);
+    color: white;
 }
 
 /* 리스트 아이템 */
 .items-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 2.5rem 0;
 }
 
 .item-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid #F9FAFB;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #F1F5F9;
+    transition: all 0.2s ease;
 }
 
 .item-row:last-child {
     border-bottom: none;
 }
 
+.item-row:hover {
+    background: #F8FAFC;
+    border-radius: 12px;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    margin-left: -0.8rem;
+    margin-right: -0.8rem;
+}
+
 .item-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     flex: 1;
 }
 
 .custom-checkbox {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     cursor: pointer;
-    color: var(--primary-color);
+    color: #CBD5E1;
     user-select: none;
+    transition: color 0.3s ease, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.item-row:hover .custom-checkbox {
+    color: #94A3B8;
+}
+
+.custom-checkbox:hover {
+    transform: scale(1.15);
+}
+
+.custom-checkbox.checked {
+    color: var(--primary-color) !important;
 }
 
 .item-name {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: color 0.3s, text-decoration 0.3s;
+    transition: all 0.3s ease;
     flex: 1;
-    padding-right: 10px;
-}
-
-.item-name:hover {
-    color: var(--primary-color);
+    color: var(--text-main);
 }
 
 .item-name.checked {
-    color: var(--text-muted);
+    color: #94A3B8;
     text-decoration: line-through;
+    opacity: 0.7;
 }
 
 .delete-item-btn {
     background: none;
     border: none;
-    color: var(--text-muted);
+    color: #CBD5E1;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 1.2rem;
     padding: 0.5rem;
+    transition: all 0.3s ease;
+    opacity: 0; /* 평소엔 숨겼다가 호버시 표시하여 더 깔끔하게 */
+}
+
+.item-row:hover .delete-item-btn {
+    opacity: 1;
+    color: #94A3B8;
 }
 
 .delete-item-btn:hover {
-    color: var(--danger-color);
+    color: var(--danger-color) !important;
+    transform: scale(1.2);
 }
 
 /* 외출하기 버튼 */
 .checkout-btn {
     width: 100%;
-    padding: 1rem;
-    background: var(--primary-color);
+    padding: 1.2rem;
+    background: var(--text-main);
     color: white;
     border: none;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: bold;
+    border-radius: var(--border-radius-sm);
+    font-size: 1.15rem;
+    font-weight: 800;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
 }
 
 .checkout-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-1px);
+    background: var(--primary-gradient);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px -5px rgba(99, 102, 241, 0.3);
 }
 
 /* 성공 팝업 애니메이션 */
@@ -332,13 +413,14 @@ main {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0,0,0,0.6);
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(8px); /* 더 강한 블러 효과 */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     opacity: 1;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
 }
 
 .popup.hidden {
@@ -348,38 +430,49 @@ main {
 
 .popup-content {
     background: white;
-    padding: 2.5rem;
-    border-radius: 24px;
+    padding: 3.5rem 3rem;
+    border-radius: 32px;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .popup-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
 }
 
 .popup-content h3 {
-    margin: 0 0 0.5rem 0;
-    color: var(--primary-dark);
+    margin: 0 0 0.8rem 0;
+    font-size: 1.8rem;
+    color: var(--text-main);
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
 .popup-content p {
     margin: 0;
     color: var(--text-muted);
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 @keyframes popIn {
-    0% { transform: scale(0.5); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% { transform: scale(0.6) translateY(30px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
 /* 모바일 반응형 완벽 대응 */
 @media (max-width: 480px) {
-    header h1 { font-size: 1.5rem; }
-    .list-title { font-size: 1.1rem; }
-    .item-name { font-size: 0.95rem; }
-    .dashboard h2 { font-size: 1.1rem; }
-    .list-card { padding: 1rem; }
+    header h1 { font-size: 1.8rem; }
+    header { padding: 2rem 0; border-bottom-left-radius: 28px; border-bottom-right-radius: 28px;}
+    .list-title { font-size: 1.3rem; }
+    .item-name { font-size: 1.05rem; }
+    .dashboard h2 { font-size: 1.2rem; }
+    .list-card { padding: 1.5rem; }
+    .popup-content { padding: 2.5rem 1.5rem; width: 85%; }
+    
+    /* 모바일에서는 hover 효과가 없으므로 x버튼 항상 보이게 처리 */
+    .delete-item-btn { opacity: 1; color: #94A3B8; }
 }
