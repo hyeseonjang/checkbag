@@ -336,7 +336,7 @@ function render() {
             
             // 시각적 체크박스 구현 (요구사항 15: '□ 학생증' 형태)
             const checkSpan = document.createElement('span');
-            checkSpan.className = 'custom-checkbox';
+            checkSpan.className = `custom-checkbox ${item.checked ? 'checked' : ''}`;
             checkSpan.textContent = item.checked ? '☑' : '□';
             checkSpan.onclick = () => toggleItemCheck(list.id, item.id);
             
