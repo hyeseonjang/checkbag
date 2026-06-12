@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트 준비물 체크리스트</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- script.js에서 모듈 사용 (Firebase Import) -->
+    <script type="module" src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>🎒 스마트 준비물 체크</h1>
+        <p>대학생을 위한 완벽한 외출 준비 앱</p>
+    </header>
+
+    <main>
+        <!-- 통계 대시보드 섹션 -->
+        <section id="dashboard" class="dashboard">
+            <h2>📊 자주 깜빡하는 물건</h2>
+            <ul id="forgotten-list">
+                <!-- Javascript를 통해 렌더링됨 -->
+            </ul>
+        </section>
+
+        <!-- 준비물 목록 생성 기능 -->
+        <section class="list-creator">
+            <input type="text" id="new-list-input" placeholder="새 목록 이름 (예: 등교 준비물)">
+            <button id="add-list-btn">생성</button>
+        </section>
+
+        <!-- 체크리스트 목록 영역 -->
+        <section id="lists-container" class="lists-container">
+            <!-- 목록 카드가 동적으로 추가됨 -->
+        </section>
+    </main>
+
+    <!-- 성공 팝업 (모든 준비물 체크 완료 시) -->
+    <div id="success-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-icon">🎉</div>
+            <h3>오늘도 빠짐없이 잘 챙겼어요!</h3>
+            <p>완벽한 하루를 응원합니다.</p>
+        </div>
+    </div>
+</body>
+</html>
